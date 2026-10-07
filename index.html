@@ -2,195 +2,443 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>For My Athhhhh Cutuuuuuu 🩵</title>
-<meta name="theme-color" content="#dff5ff">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Athhhhh 🩵</title>
+
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-body{
-  overflow-x:hidden;
-  color:#34404c;
-  background:
-    radial-gradient(circle at 15% 10%,rgba(255,255,255,.95),transparent 25%),
-    radial-gradient(circle at 90% 20%,rgba(181,231,255,.55),transparent 30%),
-    linear-gradient(135deg,#ffeaf3 0%,#f7efff 48%,#dff6ff 100%);
+*{
+  box-sizing:border-box;
 }
-button{font:inherit}
-#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
-.float{position:absolute;bottom:-50px;font-size:22px;animation:rise linear forwards;opacity:.75}
-@keyframes rise{to{transform:translateY(-115vh) rotate(18deg);opacity:0}}
-.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px}
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+}
+
+body{
+  font-family:Georgia,"Noto Sans Devanagari",serif;
+  background:linear-gradient(135deg,#fff1f6,#ffe5ef,#fff8fb);
+  color:#5c3544;
+}
+
+.page{
+  position:absolute;
+  inset:0;
+  padding:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+  transform:translateX(50px);
+  pointer-events:none;
+
+  transition:
+  opacity .7s ease,
+  transform .7s ease;
+}
+
+.page.active{
+  opacity:1;
+  transform:translateX(0);
+  pointer-events:auto;
+}
+
 .card{
-  width:min(720px,100%);
-  border:1px solid rgba(255,255,255,.8);
-  background:rgba(255,255,255,.62);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  box-shadow:0 25px 70px rgba(90,100,130,.18);
-  border-radius:32px;
-  padding:28px 20px;
+  width:min(900px,100%);
+  height:min(760px,94vh);
+
+  overflow-y:auto;
+
+  background:rgba(255,255,255,.94);
+
+  border-radius:30px;
+
+  padding:30px;
+
+  box-shadow:
+  0 20px 60px rgba(110,45,70,.18);
+}
+
+h1{
+  text-align:center;
+  color:#ad5074;
+  font-size:clamp(34px,7vw,58px);
+  margin:10px 0 25px;
+}
+
+h2{
+  text-align:center;
+  color:#ad5074;
+  font-size:clamp(27px,5vw,42px);
+  margin:8px 0 25px;
+}
+
+p{
+  font-size:clamp(17px,2.7vw,21px);
+  line-height:1.8;
+  white-space:pre-line;
+}
+
+.heart{
+  text-align:center;
+  font-size:42px;
+  animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+  50%{
+    transform:scale(1.18);
+  }
+}
+
+.media{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:15px 0 20px;
+}
+
+.media img,
+.media video{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.center{
   text-align:center;
 }
-.opening .card{padding:40px 22px}
-.small{font-size:14px;letter-spacing:2px;color:#7c91a3;text-transform:uppercase}
-h1{font-size:clamp(30px,8vw,56px);line-height:1.05;margin:12px 0 8px;color:#526f83}
-h2{font-size:clamp(25px,6vw,38px);margin:8px 0 16px;color:#536d7d}
-p{font-size:18px;line-height:1.75;margin:10px auto;max-width:620px}
-.sub{color:#71818d;font-size:16px}
-.envelope{
-  margin:30px auto 20px;
-  width:min(280px,80vw);height:185px;
-  border-radius:22px;
-  background:linear-gradient(145deg,#f9b9d1,#d4efff);
-  position:relative;
-  box-shadow:0 18px 35px rgba(80,100,130,.18);
+
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:20px;
+  gap:10px;
+}
+
+button{
+  border:none;
+  border-radius:30px;
+
+  padding:13px 22px;
+
+  background:#d77d9e;
+  color:white;
+
+  font-size:16px;
+
   cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:.25s transform;
+
+  box-shadow:0 5px 15px rgba(180,70,110,.2);
 }
-.envelope:active{transform:scale(.96)}
-.envelope:before{
-  content:"";position:absolute;inset:0;
-  clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
-  background:rgba(255,255,255,.32);
-  border-radius:22px;
+
+button:active{
+  transform:scale(.95);
 }
-.seal{
-  position:relative;z-index:2;
-  width:70px;height:70px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  background:#fff;box-shadow:0 8px 25px rgba(80,100,130,.18);
-  font-size:30px;
+
+.dots{
+  text-align:center;
+  color:#bd718e;
+  margin-top:12px;
+  letter-spacing:5px;
 }
-.tap{font-weight:700;color:#607b8b;margin-top:8px}
-.hidden{display:none!important}
-.fadein{animation:fade .7s ease both}
-@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
-.photo{
-  width:100%;max-height:520px;object-fit:cover;
-  border-radius:24px;
-  box-shadow:0 14px 35px rgba(60,80,100,.16);
-  display:block;
+
+@media(max-width:650px){
+
+  .card{
+    padding:21px;
+    height:94vh;
+    border-radius:24px;
+  }
+
+  .media{
+    grid-template-columns:1fr;
+  }
+
+  .media img,
+  .media video{
+    height:190px;
+  }
+
+  p{
+    line-height:1.7;
+  }
 }
-.frame{margin:20px 0}
-.caption{font-size:14px;color:#7d8b94;margin-top:9px}
-.video-wrap{
-  margin:26px auto 10px;
-  padding:9px;
-  max-width:390px;
-  border-radius:28px;
-  background:rgba(255,255,255,.7);
-  box-shadow:0 15px 35px rgba(60,80,100,.14);
-}
-video{width:100%;display:block;border-radius:21px;max-height:620px;background:#eef5f8}
-.message{
-  margin:26px 0;
-  padding:24px 18px;
-  border-radius:25px;
-  background:linear-gradient(135deg,rgba(255,237,245,.82),rgba(226,247,255,.86));
-  border:1px solid rgba(255,255,255,.9);
-}
-.line{margin:0 0 13px}
-.signature{font-size:21px;font-weight:800;color:#5b7483;margin-top:22px}
-.end{
-  margin-top:24px;
-  padding:25px 12px 5px;
-  color:#5c7380;
-}
-.btn{
-  border:0;border-radius:999px;padding:13px 21px;
-  background:rgba(255,255,255,.78);
-  color:#5d7380;font-weight:800;
-  box-shadow:0 8px 22px rgba(70,90,110,.12);
-  cursor:pointer;
-}
-.footer{font-size:12px;color:#8797a1;margin-top:18px}
 </style>
 </head>
+
+
 <body>
-<div id="hearts"></div>
 
-<section class="screen opening" id="opening">
-  <div class="card">
-    <div class="small">A little something for you</div>
-    <h1>For my<br>Athhhhh Cutuuuuuu 🩵</h1>
-    <p class="sub">ek choti si goshta aahe<br>ji mala tula sangaychi hoti 🥹</p>
 
-    <div class="envelope" onclick="openCard()" aria-label="Open card">
-      <div class="seal">🧿</div>
-    </div>
+<!-- PAGE 1 -->
 
-    <div class="tap">tap to open 🤌🤌</div>
-  </div>
+<section class="page active">
+
+<div class="card">
+
+<div class="heart">🩵</div>
+
+<h1>माझ्या Athhhhh साठी</h1>
+
+<p>
+
+कधी कधी मला खरंच वाटतं की काही माणसं आपल्या आयुष्यात येतात ती फक्त योगायोगाने नाही तर अगदी योग्य वेळी येतात आणि तू माझ्या आयुष्यात आलीस ना ते माझ्यासाठी अगदी तसंच काहीतरी आहे 🥹🩵
+
+तू माझ्या आयुष्यात येण्याआधी मला कधी वाटलंच नव्हतं की एखादी व्यक्ती इतकी आपली वाटू शकते की तिच्याशी बोलल्याशिवाय दिवस अपूर्ण वाटावा तिचा एक छोटासा message सुद्धा चेहऱ्यावर smile आणू शकतो आणि तिचं फक्त असणं सुद्धा मनाला शांत करू शकतं
+
+तू माझ्या आयुष्यात आलीस आणि हळूहळू माझं आयुष्यच थोडं जास्त सुंदर झालं 🫶🏻
+
+मला नाही माहित हे सगळं शब्दात किती नीट सांगता येईल पण एक गोष्ट मात्र नक्की आहे तू माझ्यासाठी खूप special आहेस
+
+आणि हे special असणं फक्त बोलण्यासाठी नाही तर अगदी मनापासून आहे 🤍
+
+</p>
+
+<div class="nav">
+<span></span>
+<button onclick="nextPage()">पुढे 🥹 →</button>
+</div>
+
+<div class="dots">● ○ ○ ○</div>
+
+</div>
+
 </section>
 
-<section class="screen hidden" id="inside">
-  <div class="card fadein">
-    <div class="small">only for you</div>
-    <h2>माझ्या Cutuuuu साठी 🩵</h2>
 
-    <div class="frame">
-      <img class="photo" src="media/ath-photo.jpg" alt="A special memory">
-      <div class="caption">ही photo पाहिली की smile आपोआप येते 🥹</div>
-    </div>
 
-    <div class="message">
-      <p class="line">खरं सांगू का Athhhhh 🥹</p>
-      <p class="line">तू माझ्या आयुष्यात आलीस ना तेव्हापासून काही गोष्टी खरंच खूप सुंदर झाल्या आहेत 🩵</p>
-      <p class="line">तुझ्याशी बोलणं तुझं हसणं तुझं माझ्यासाठी असणं आणि अगदी छोट्या छोट्या गोष्टींची काळजी घेणं हे सगळं माझ्यासाठी खूप special आहे 🫠</p>
-      <p class="line">कधी कधी तुला किती love करतो हे सांगायला wordsच कमी पडतात 😭</p>
-      <p class="line">तुझी जागा कोणीच घेऊ शकत नाही आणि honestly मला ती जागा दुसऱ्या कोणाला द्यायचीही नाही 🤌🥺</p>
-      <p class="line">तू अशीच माझ्यासोबत राहा माझ्या प्रत्येक सुखात माझ्या प्रत्येक अडचणीत आणि माझ्या प्रत्येक वेड्या गोष्टीत 🫂</p>
-      <p class="line">आपल्यात कितीही distance असो कितीही दिवस कठीण असोत माझं मन मात्र कायम तुझ्याजवळच असेल 🥹</p>
-    </div>
+<!-- PAGE 2 -->
 
-    <div class="video-wrap">
-      <video controls playsinline preload="metadata" poster="media/ath-photo.jpg">
-        <source src="media/ath-video.mp4" type="video/mp4">
-        Your browser does not support this video.
-      </video>
-    </div>
+<section class="page">
 
-    <div class="message">
-      <p class="line">माझी Athhhhh</p>
-      <p class="line">माझी Cutuuuu</p>
-      <p class="line">माझं favourite person</p>
-      <p class="line">आणि कायमची माझी person 🩵</p>
-      <p class="line">खूप खूप खूप love you 😚🤍</p>
-      <p class="line">आजपेक्षा उद्या अजून जास्त आणि त्यानंतरही कायम ♾️</p>
-      <div class="signature">तुझाच 🫂</div>
-    </div>
+<div class="card">
 
-    <div class="end">
-      <div style="font-size:32px">🩵 🧿 🥹 🫂 ♾️</div>
-      <p>तुझ्यासाठी बनवलेलं हे छोटंसं world फक्त तुझंच आहे 🥺</p>
-      <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">एकदा परत सुरुवातीपासून 🤌🤌</button>
-      <div class="footer">made with a lot of love 🩵</div>
-    </div>
-  </div>
+<h2>तू मला समजून घेतलंस 🥹</h2>
+
+<p>
+
+माझ्यात खूप गोष्टी perfect नाहीत हे मला माहीत आहे
+
+कधी मी जास्त विचार करतो कधी काही गोष्टी नीट explain करता येत नाहीत कधी माझा mood weird असतो आणि कधी कधी तर मी स्वतःलाच समजत नाही 😭
+
+पण त्या सगळ्या वेळेला तू मला judge करण्यापेक्षा मला समजून घ्यायचा प्रयत्न केलास आणि ही गोष्ट माझ्यासाठी खूप मोठी आहे 🫂🩵
+
+माझं शांत राहणं माझं overthinking माझे छोटे छोटे हट्ट माझ्या मनातल्या गोष्टी आणि कधी कधी मी न सांगताही तुला काहीतरी जाणवणं हे सगळं मला खूप special वाटतं
+
+तू मला फक्त माझ्या चांगल्या दिवसांमध्ये नाही तर माझ्या वाईट mood मध्ये सुद्धा accept केलंस
+
+आणि खरं सांगायचं तर आयुष्यात अशी व्यक्ती मिळणं खूप मोठी गोष्ट आहे जी आपल्याला बदलण्याचा प्रयत्न न करता आधी आपल्याला समजून घेते 🥹🤍
+
+तुझ्यासोबत मला स्वतःसारखं राहता येतं आणि कदाचित म्हणूनच तुझ्यासोबत असताना मनाला एक वेगळीच शांतता मिळते 🫶🏻
+
+</p>
+
+<div class="nav">
+
+<button onclick="prevPage()">← मागे</button>
+
+<button onclick="nextPage()">पुढे 🩵 →</button>
+
+</div>
+
+<div class="dots">○ ● ○ ○</div>
+
+</div>
+
 </section>
+
+
+
+<!-- PAGE 3 -->
+
+<section class="page">
+
+<div class="card">
+
+<h2>माझं तुझ्यावरचं प्रेम 🩵</h2>
+
+<p>
+
+तुझ्यावर प्रेम करणं माझ्यासाठी कधीच एखादी मोठी गोष्ट करून दाखवण्यापुरतं राहिलं नाही
+
+ते रोजच्या त्या छोट्या छोट्या गोष्टींमध्ये आहे
+
+तुझी आठवण येण्यात आहे
+
+तुझ्याशी बोलायची इच्छा होण्यात आहे
+
+तू खुश आहेस का हे विचारण्यात आहे
+
+तुझ्या एका smile साठी काहीही करण्याची इच्छा होण्यात आहे 😚🩵
+
+मला तुझं फक्त आजचं रूप आवडत नाही मला तुझं मन आवडतं
+
+तुझं मला समजून घेणं आवडतं
+
+तुझं माझ्यासाठी काळजी करणं आवडतं
+
+तुझं थोडंसं possessive असणं सुद्धा मला cute वाटतं 😭🩵
+
+तू माझ्यासाठी फक्त माझी girlfriend नाहीस
+
+तू माझ्या आयुष्यातली ती व्यक्ती आहेस जिला मी माझ्या पुढच्या अनेक वर्षांच्या गोष्टींमध्ये imagine करतो 🫂
+
+आणि एक गोष्ट कायम लक्षात ठेव
+
+तुझी जागा माझ्या आयुष्यात कोणीही घेऊ शकत नाही 🤍
+
+तू आहेस म्हणून मला कुणाचीही गरज वाटत नाही
+
+आणि तुझ्यावरचं माझं प्रेम किती आहे हे सांगायला खरंच माझ्याकडे पुरेसे शब्द नाहीत 🥹🩵
+
+</p>
+
+<div class="nav">
+
+<button onclick="prevPage()">← मागे</button>
+
+<button onclick="nextPage()">पुढे 😚 →</button>
+
+</div>
+
+<div class="dots">○ ○ ● ○</div>
+
+</div>
+
+</section>
+
+
+
+<!-- PAGE 4 -->
+
+<section class="page">
+
+<div class="card">
+
+<h2>आपल्या आठवणी 🥹🩵</h2>
+
+<div class="media">
+
+<img src="photo1.jpg" alt="आपली आठवण">
+
+<img src="photo2.jpg" alt="आपली आठवण">
+
+<img src="photo3.jpg" alt="आपली आठवण">
+
+<video controls playsinline src="video.mp4"></video>
+
+</div>
+
+<p>
+
+हे फोटो आणि हा video फक्त memories नाहीत माझ्यासाठी
+
+हे सगळं पाहिलं की मला आपली गोष्ट आठवते
+
+आपण कुठून सुरुवात केली आणि आज कुठे आलोय हे विचार केलं की खरंच खूप काही बदललंय 🥹
+
+पुढे कितीही अंतर असो
+
+कितीही busy days असोत
+
+कितीही problems येऊ दे
+
+मला फक्त एवढंच हवंय की आपण एकमेकांची साथ कधीच सोडू नये 🫂🩵
+
+माझ्या आयुष्यात आल्याबद्दल thank you Athhhhh 🥹🤍
+
+मला प्रेम काय असतं हे फक्त सांगितलं नाहीस तर ते feel करून दिलंस
+
+माझ्यावर विश्वास ठेवलास
+
+मला समजून घेतलंस
+
+माझ्या प्रत्येक छोट्या गोष्टीला importance दिलीस
+
+आणि म्हणूनच तू माझ्यासाठी इतकी important झाली आहेस की ते शब्दात explain करणं खरंच impossible आहे 😭🩵
+
+आणि हो माझ्या cutuuuuuu
+
+तू कितीही मोठी झालीस तरी माझ्यासाठी तू माझी तीच special Ath राहशील जिच्यासाठी मी नेहमी extra effort घेईन 😚🩵
+
+खूप खूप प्रेम करतो तुझ्यावर
+
+आणि हे प्रेम किती आहे हे मोजायला माझ्याकडे शब्दही कमी पडतील 🫂🤍🩵
+
+</p>
+
+<p class="center">
+
+Forever yours 🩵
+
+<br><br>
+
+तुझा idiot 😭🤍
+
+</p>
+
+<div class="nav">
+
+<button onclick="prevPage()">← मागे</button>
+
+<button onclick="restart()">पुन्हा वाचूया 🥹</button>
+
+</div>
+
+<div class="dots">○ ○ ○ ●</div>
+
+</div>
+
+</section>
+
+
 
 <script>
-const emojis=["🩵","🧿","🫠","🤌","😭","😚","🥺","🤍","♾️","🥹","🫂"];
-function floatEmoji(){
-  const e=document.createElement("div");
-  e.className="float";
-  e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
-  e.style.left=(Math.random()*100)+"vw";
-  e.style.animationDuration=(5+Math.random()*5)+"s";
-  e.style.fontSize=(16+Math.random()*18)+"px";
-  document.getElementById("hearts").appendChild(e);
-  setTimeout(()=>e.remove(),11000);
-}
-setInterval(floatEmoji,650);
 
-function openCard(){
-  document.getElementById("opening").classList.add("hidden");
-  document.getElementById("inside").classList.remove("hidden");
-  window.scrollTo(0,0);
-  for(let i=0;i<10;i++) setTimeout(floatEmoji,i*120);
+let currentPage = 0;
+
+const pages = document.querySelectorAll(".page");
+
+function showPage(number){
+
+currentPage = (number + pages.length) % pages.length;
+
+pages.forEach((page,index)=>{
+
+page.classList.toggle("active",index === currentPage);
+
+});
+
 }
+
+function nextPage(){
+
+showPage(currentPage + 1);
+
+}
+
+function prevPage(){
+
+showPage(currentPage - 1);
+
+}
+
+function restart(){
+
+showPage(0);
+
+}
+
 </script>
+
+
 </body>
 </html>
