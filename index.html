@@ -1,192 +1,690 @@
 <!DOCTYPE html>
 <html lang="mr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Athhhhh 🩵</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>For My Athhhhh 🩵</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
+box-sizing:border-box;
 }
 
 html,body{
-  margin:0;
-  width:100%;
-  height:100%;
-  overflow:hidden;
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+overflow:hidden;
 }
 
 body{
-  font-family:Georgia,"Noto Sans Devanagari",serif;
-  background:linear-gradient(135deg,#fff1f6,#ffe5ef,#fff8fb);
-  color:#5c3544;
+
+font-family:
+Georgia,
+"Noto Sans Devanagari",
+serif;
+
+background:
+linear-gradient(
+135deg,
+#ffeaf2,
+#fff5f8,
+#e8f7ff
+);
+
+color:#573442;
+
 }
 
+/* =========================
+ENVELOPE SCREEN
+========================= */
+
+#opening{
+
+position:fixed;
+
+inset:0;
+
+z-index:100;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:
+linear-gradient(
+135deg,
+#ffdce9,
+#fff4f8,
+#dff4ff
+);
+
+transition:
+opacity 1s ease,
+visibility 1s ease;
+
+}
+
+#opening.hide{
+
+opacity:0;
+
+visibility:hidden;
+
+}
+
+.envelope-box{
+
+text-align:center;
+
+}
+
+.envelope{
+
+position:relative;
+
+width:280px;
+
+height:190px;
+
+margin:auto;
+
+background:#f7a8c2;
+
+border-radius:8px;
+
+box-shadow:
+0 25px 60px
+rgba(100,40,65,.25);
+
+cursor:pointer;
+
+transition:
+transform .5s ease;
+
+}
+
+.envelope:hover{
+
+transform:
+translateY(-8px)
+rotate(-1deg);
+
+}
+
+.envelope:before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:0;
+
+height:0;
+
+border-left:140px solid transparent;
+
+border-right:140px solid transparent;
+
+border-top:100px solid #e889aa;
+
+transform-origin:top;
+
+transition:
+transform 1s ease;
+
+z-index:3;
+
+}
+
+.envelope.open:before{
+
+transform:
+rotateX(180deg);
+
+}
+
+.envelope:after{
+
+content:"";
+
+position:absolute;
+
+bottom:0;
+
+left:0;
+
+width:0;
+
+height:0;
+
+border-left:140px solid #ee91b0;
+
+border-right:140px solid #ee91b0;
+
+border-top:95px solid transparent;
+
+border-bottom:95px solid transparent;
+
+}
+
+.letter{
+
+position:absolute;
+
+width:220px;
+
+height:145px;
+
+background:#fffdf9;
+
+left:30px;
+
+top:25px;
+
+z-index:2;
+
+border-radius:5px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:25px;
+
+color:#b24d72;
+
+transition:
+transform 1s ease,
+top 1s ease;
+
+}
+
+.envelope.open .letter{
+
+top:-105px;
+
+transform:
+scale(1.05);
+
+}
+
+.seal{
+
+position:absolute;
+
+z-index:10;
+
+left:50%;
+
+top:50%;
+
+transform:
+translate(-50%,-50%);
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+background:#c9587e;
+
+color:white;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:25px;
+
+box-shadow:
+0 5px 15px
+rgba(80,30,50,.2);
+
+transition:.4s;
+
+}
+
+.envelope.open .seal{
+
+opacity:0;
+
+transform:
+translate(-50%,-50%)
+scale(0);
+
+}
+
+.open-text{
+
+margin-top:35px;
+
+font-size:20px;
+
+color:#a94f70;
+
+animation:
+softPulse 1.7s infinite;
+
+}
+
+@keyframes softPulse{
+
+50%{
+transform:scale(1.05);
+}
+
+}
+
+/* =========================
+PAGES
+========================= */
+
 .page{
-  position:absolute;
-  inset:0;
-  padding:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
 
-  opacity:0;
-  transform:translateX(50px);
-  pointer-events:none;
+position:absolute;
 
-  transition:
-  opacity .7s ease,
-  transform .7s ease;
+inset:0;
+
+padding:18px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+opacity:0;
+
+transform:
+translateX(70px)
+scale(.96);
+
+pointer-events:none;
+
+transition:
+
+opacity .7s ease,
+
+transform .7s ease;
+
 }
 
 .page.active{
-  opacity:1;
-  transform:translateX(0);
-  pointer-events:auto;
+
+opacity:1;
+
+transform:
+translateX(0)
+scale(1);
+
+pointer-events:auto;
+
 }
 
 .card{
-  width:min(900px,100%);
-  height:min(760px,94vh);
 
-  overflow-y:auto;
+width:min(900px,100%);
 
-  background:rgba(255,255,255,.94);
+height:min(760px,94vh);
 
-  border-radius:30px;
+overflow-y:auto;
 
-  padding:30px;
+background:
+rgba(255,255,255,.94);
 
-  box-shadow:
-  0 20px 60px rgba(110,45,70,.18);
+border-radius:30px;
+
+padding:30px;
+
+box-shadow:
+
+0 20px 70px
+rgba(100,40,65,.17);
+
+position:relative;
+
+}
+
+.card:before{
+
+content:"🩵";
+
+position:absolute;
+
+right:25px;
+
+top:15px;
+
+font-size:22px;
+
+opacity:.5;
+
 }
 
 h1{
-  text-align:center;
-  color:#ad5074;
-  font-size:clamp(34px,7vw,58px);
-  margin:10px 0 25px;
+
+text-align:center;
+
+font-size:
+clamp(35px,7vw,60px);
+
+color:#ad5274;
+
+margin:15px 0 25px;
+
 }
 
 h2{
-  text-align:center;
-  color:#ad5074;
-  font-size:clamp(27px,5vw,42px);
-  margin:8px 0 25px;
+
+text-align:center;
+
+font-size:
+clamp(27px,5vw,43px);
+
+color:#ad5274;
+
+margin:10px 0 25px;
+
 }
 
 p{
-  font-size:clamp(17px,2.7vw,21px);
-  line-height:1.8;
-  white-space:pre-line;
+
+font-size:
+clamp(17px,2.6vw,21px);
+
+line-height:1.8;
+
+white-space:pre-line;
+
+}
+
+.center{
+
+text-align:center;
+
 }
 
 .heart{
-  text-align:center;
-  font-size:42px;
-  animation:heartbeat 1.5s infinite;
+
+font-size:43px;
+
+text-align:center;
+
+animation:
+heartbeat 1.5s infinite;
+
 }
 
 @keyframes heartbeat{
-  50%{
-    transform:scale(1.18);
-  }
+
+50%{
+transform:scale(1.18);
 }
 
+}
+
+/* =========================
+MEDIA
+========================= */
+
 .media{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin:15px 0 20px;
+
+display:grid;
+
+grid-template-columns:
+1fr 1fr;
+
+gap:12px;
+
+margin:
+15px 0 20px;
+
 }
 
 .media img,
 .media video{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  border-radius:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.1);
+
+width:100%;
+
+height:220px;
+
+object-fit:cover;
+
+border-radius:20px;
+
+box-shadow:
+0 8px 25px
+rgba(80,30,50,.13);
+
 }
 
-.center{
-  text-align:center;
-}
+/* =========================
+BUTTONS
+========================= */
 
 .nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:20px;
-  gap:10px;
+
+display:flex;
+
+justify-content:
+space-between;
+
+align-items:center;
+
+margin-top:22px;
+
 }
 
 button{
-  border:none;
-  border-radius:30px;
 
-  padding:13px 22px;
+border:none;
 
-  background:#d77d9e;
-  color:white;
+border-radius:30px;
 
-  font-size:16px;
+padding:
+13px 23px;
 
-  cursor:pointer;
+background:
+linear-gradient(
+135deg,
+#d77c9e,
+#bc5e82
+);
 
-  box-shadow:0 5px 15px rgba(180,70,110,.2);
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+box-shadow:
+0 7px 18px
+rgba(170,70,105,.2);
+
+transition:.25s;
+
+}
+
+button:hover{
+
+transform:
+translateY(-3px);
+
 }
 
 button:active{
-  transform:scale(.95);
+
+transform:
+scale(.95);
+
 }
 
 .dots{
-  text-align:center;
-  color:#bd718e;
-  margin-top:12px;
-  letter-spacing:5px;
+
+text-align:center;
+
+margin-top:13px;
+
+color:#bd6c89;
+
+letter-spacing:5px;
+
+}
+
+/* =========================
+FINAL HEART
+========================= */
+
+.final-heart{
+
+font-size:60px;
+
+text-align:center;
+
+animation:
+heartbeat 1.3s infinite;
+
 }
 
 @media(max-width:650px){
 
-  .card{
-    padding:21px;
-    height:94vh;
-    border-radius:24px;
-  }
+.card{
 
-  .media{
-    grid-template-columns:1fr;
-  }
+padding:21px;
 
-  .media img,
-  .media video{
-    height:190px;
-  }
+height:94vh;
 
-  p{
-    line-height:1.7;
-  }
+border-radius:25px;
+
 }
+
+.media{
+
+grid-template-columns:1fr;
+
+}
+
+.media img,
+.media video{
+
+height:190px;
+
+}
+
+p{
+
+line-height:1.7;
+
+}
+
+.envelope{
+
+width:250px;
+
+height:170px;
+
+}
+
+.envelope:before{
+
+border-left-width:125px;
+
+border-right-width:125px;
+
+}
+
+}
+
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- PAGE 1 -->
+<!-- =========================
+OPENING
+========================= -->
 
-<section class="page active">
+<div id="opening">
+
+<div class="envelope-box">
+
+<div
+class="envelope"
+id="envelope"
+onclick="openLetter()">
+
+<div class="letter">
+
+For My Athhhhh 🩵
+
+</div>
+
+<div class="seal">
+
+🩵
+
+</div>
+
+</div>
+
+<div class="open-text">
+
+एक छोटंसं letter आहे तुझ्यासाठी 🥹🩵
+
+<br>
+
+<strong>Open कर cutuuuu 😚</strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- =========================
+PAGE 1
+========================= -->
+
+<section class="page">
 
 <div class="card">
 
-<div class="heart">🩵</div>
+<div class="heart">
 
-<h1>माझ्या Athhhhh साठी</h1>
+🩵
+
+</div>
+
+<h1>
+
+माझ्या Athhhhh साठी
+
+</h1>
 
 <p>
 
@@ -194,20 +692,37 @@ button:active{
 
 तू माझ्या आयुष्यात येण्याआधी मला कधी वाटलंच नव्हतं की एखादी व्यक्ती इतकी आपली वाटू शकते की तिच्याशी बोलल्याशिवाय दिवस अपूर्ण वाटावा तिचा एक छोटासा message सुद्धा चेहऱ्यावर smile आणू शकतो आणि तिचं फक्त असणं सुद्धा मनाला शांत करू शकतं
 
-तू माझ्या आयुष्यात आलीस आणि हळूहळू माझं आयुष्यच थोडं जास्त सुंदर झालं 🫶🏻
+तू आलीस आणि हळूहळू माझं आयुष्यच थोडं जास्त सुंदर झालं 🫶🏻
 
-मला नाही माहित हे सगळं शब्दात किती नीट सांगता येईल पण एक गोष्ट मात्र नक्की आहे तू माझ्यासाठी खूप special आहेस
+तुझ्यासोबत बोलताना मला कधी कधी वेळ कसा जातो हेच कळत नाही
+
+तुझ्याशी share करावंसं वाटणं तुझी आठवण येणं आणि काहीही झालं तरी तुला सांगावंसं वाटणं हे सगळं माझ्यासाठी खूप वेगळं आहे
+
+मला नाही माहित हे सगळं शब्दात किती नीट सांगता येईल पण एक गोष्ट मात्र नक्की आहे
+
+तू माझ्यासाठी खूप special आहेस
 
 आणि हे special असणं फक्त बोलण्यासाठी नाही तर अगदी मनापासून आहे 🤍
 
 </p>
 
 <div class="nav">
+
 <span></span>
-<button onclick="nextPage()">पुढे 🥹 →</button>
+
+<button onclick="nextPage()">
+
+पुढे 🥹 →
+
+</button>
+
 </div>
 
-<div class="dots">● ○ ○ ○</div>
+<div class="dots">
+
+● ○ ○ ○
+
+</div>
 
 </div>
 
@@ -215,13 +730,19 @@ button:active{
 
 
 
-<!-- PAGE 2 -->
+<!-- =========================
+PAGE 2
+========================= -->
 
 <section class="page">
 
 <div class="card">
 
-<h2>तू मला समजून घेतलंस 🥹</h2>
+<h2>
+
+तू मला समजून घेतलंस 🥹
+
+</h2>
 
 <p>
 
@@ -235,21 +756,39 @@ button:active{
 
 तू मला फक्त माझ्या चांगल्या दिवसांमध्ये नाही तर माझ्या वाईट mood मध्ये सुद्धा accept केलंस
 
+माझ्या आयुष्यात येऊन तू मला कधीच असं feel होऊ दिलं नाहीस की मला सगळं एकट्याने handle करावं लागेल
+
+कधी माझं मन heavy असतं तेव्हा तुझ्याशी बोलणं पुरेसं वाटतं
+
 आणि खरं सांगायचं तर आयुष्यात अशी व्यक्ती मिळणं खूप मोठी गोष्ट आहे जी आपल्याला बदलण्याचा प्रयत्न न करता आधी आपल्याला समजून घेते 🥹🤍
 
-तुझ्यासोबत मला स्वतःसारखं राहता येतं आणि कदाचित म्हणूनच तुझ्यासोबत असताना मनाला एक वेगळीच शांतता मिळते 🫶🏻
+तुझ्यासोबत मला स्वतःसारखं राहता येतं
+
+आणि कदाचित म्हणूनच तुझ्यासोबत असताना मनाला एक वेगळीच शांतता मिळते 🫶🏻
 
 </p>
 
 <div class="nav">
 
-<button onclick="prevPage()">← मागे</button>
+<button onclick="prevPage()">
 
-<button onclick="nextPage()">पुढे 🩵 →</button>
+← मागे
+
+</button>
+
+<button onclick="nextPage()">
+
+पुढे 🩵 →
+
+</button>
 
 </div>
 
-<div class="dots">○ ● ○ ○</div>
+<div class="dots">
+
+○ ● ○ ○
+
+</div>
 
 </div>
 
@@ -257,13 +796,19 @@ button:active{
 
 
 
-<!-- PAGE 3 -->
+<!-- =========================
+PAGE 3
+========================= -->
 
 <section class="page">
 
 <div class="card">
 
-<h2>माझं तुझ्यावरचं प्रेम 🩵</h2>
+<h2>
+
+माझं तुझ्यावरचं प्रेम 🩵
+
+</h2>
 
 <p>
 
@@ -279,7 +824,9 @@ button:active{
 
 तुझ्या एका smile साठी काहीही करण्याची इच्छा होण्यात आहे 😚🩵
 
-मला तुझं फक्त आजचं रूप आवडत नाही मला तुझं मन आवडतं
+मला तुझं फक्त आजचं रूप आवडत नाही
+
+मला तुझं मन आवडतं
 
 तुझं मला समजून घेणं आवडतं
 
@@ -287,29 +834,47 @@ button:active{
 
 तुझं थोडंसं possessive असणं सुद्धा मला cute वाटतं 😭🩵
 
+तुझ्यातल्या छोट्या छोट्या गोष्टी मला आवडतात
+
+तू हसतेस ते आवडतं
+
+तुझं बोलणं आवडतं
+
+तुझी काळजी घेण्याची पद्धत आवडते
+
+आणि सगळ्यात जास्त म्हणजे तू माझ्यासोबत जशी आहेस तशीच मला आवडतेस 🥹🤍
+
 तू माझ्यासाठी फक्त माझी girlfriend नाहीस
 
-तू माझ्या आयुष्यातली ती व्यक्ती आहेस जिला मी माझ्या पुढच्या अनेक वर्षांच्या गोष्टींमध्ये imagine करतो 🫂
+तू माझ्या आयुष्यातली ती व्यक्ती आहेस जिला मी माझ्या पुढच्या अनेक वर्षांच्या गोष्टींमध्ये imagine करतो 🫂🩵
 
-आणि एक गोष्ट कायम लक्षात ठेव
+तुझी जागा माझ्या आयुष्यात कोणीही घेऊ शकत नाही
 
-तुझी जागा माझ्या आयुष्यात कोणीही घेऊ शकत नाही 🤍
-
-तू आहेस म्हणून मला कुणाचीही गरज वाटत नाही
-
-आणि तुझ्यावरचं माझं प्रेम किती आहे हे सांगायला खरंच माझ्याकडे पुरेसे शब्द नाहीत 🥹🩵
+आणि तुझ्यावरचं माझं प्रेम किती आहे हे सांगायला खरंच माझ्याकडे पुरेसे शब्द नाहीत 😭🩵
 
 </p>
 
 <div class="nav">
 
-<button onclick="prevPage()">← मागे</button>
+<button onclick="prevPage()">
 
-<button onclick="nextPage()">पुढे 😚 →</button>
+← मागे
+
+</button>
+
+<button onclick="nextPage()">
+
+पुढे 😚 →
+
+</button>
 
 </div>
 
-<div class="dots">○ ○ ● ○</div>
+<div class="dots">
+
+○ ○ ● ○
+
+</div>
 
 </div>
 
@@ -317,23 +882,39 @@ button:active{
 
 
 
-<!-- PAGE 4 -->
+<!-- =========================
+PAGE 4
+========================= -->
 
 <section class="page">
 
 <div class="card">
 
-<h2>आपल्या आठवणी 🥹🩵</h2>
+<h2>
+
+आपल्या आठवणी 🥹🩵
+
+</h2>
 
 <div class="media">
 
-<img src="photo1.jpg" alt="आपली आठवण">
+<img
+src="IMG-20260918-WA0020.jpg"
+alt="Ath 🩵">
 
-<img src="photo2.jpg" alt="आपली आठवण">
+<img
+src="Snapchat-2034977525.jpg"
+alt="Ath 🩵">
 
-<img src="photo3.jpg" alt="आपली आठवण">
+<img
+src="THIRD_PHOTO_FILENAME_HERE"
+alt="Our memory 🩵">
 
-<video controls playsinline src="video.mp4"></video>
+<video
+controls
+playsinline
+src="VID-20260918-WA0030.mp4">
+</video>
 
 </div>
 
@@ -341,104 +922,12 @@ button:active{
 
 हे फोटो आणि हा video फक्त memories नाहीत माझ्यासाठी
 
-हे सगळं पाहिलं की मला आपली गोष्ट आठवते
+हे सगळं पाहिलं की मला आपली गोष्ट आठवते 🥹🩵
 
-आपण कुठून सुरुवात केली आणि आज कुठे आलोय हे विचार केलं की खरंच खूप काही बदललंय 🥹
+आपण कुठून सुरुवात केली आणि आज कुठे आलोय हे विचार केलं की खरंच खूप काही बदललंय
 
 पुढे कितीही अंतर असो
 
 कितीही busy days असोत
 
-कितीही problems येऊ दे
-
-मला फक्त एवढंच हवंय की आपण एकमेकांची साथ कधीच सोडू नये 🫂🩵
-
-माझ्या आयुष्यात आल्याबद्दल thank you Athhhhh 🥹🤍
-
-मला प्रेम काय असतं हे फक्त सांगितलं नाहीस तर ते feel करून दिलंस
-
-माझ्यावर विश्वास ठेवलास
-
-मला समजून घेतलंस
-
-माझ्या प्रत्येक छोट्या गोष्टीला importance दिलीस
-
-आणि म्हणूनच तू माझ्यासाठी इतकी important झाली आहेस की ते शब्दात explain करणं खरंच impossible आहे 😭🩵
-
-आणि हो माझ्या cutuuuuuu
-
-तू कितीही मोठी झालीस तरी माझ्यासाठी तू माझी तीच special Ath राहशील जिच्यासाठी मी नेहमी extra effort घेईन 😚🩵
-
-खूप खूप प्रेम करतो तुझ्यावर
-
-आणि हे प्रेम किती आहे हे मोजायला माझ्याकडे शब्दही कमी पडतील 🫂🤍🩵
-
-</p>
-
-<p class="center">
-
-Forever yours 🩵
-
-<br><br>
-
-तुझा idiot 😭🤍
-
-</p>
-
-<div class="nav">
-
-<button onclick="prevPage()">← मागे</button>
-
-<button onclick="restart()">पुन्हा वाचूया 🥹</button>
-
-</div>
-
-<div class="dots">○ ○ ○ ●</div>
-
-</div>
-
-</section>
-
-
-
-<script>
-
-let currentPage = 0;
-
-const pages = document.querySelectorAll(".page");
-
-function showPage(number){
-
-currentPage = (number + pages.length) % pages.length;
-
-pages.forEach((page,index)=>{
-
-page.classList.toggle("active",index === currentPage);
-
-});
-
-}
-
-function nextPage(){
-
-showPage(currentPage + 1);
-
-}
-
-function prevPage(){
-
-showPage(currentPage - 1);
-
-}
-
-function restart(){
-
-showPage(0);
-
-}
-
-</script>
-
-
-</body>
-</html>
+कितीही problems ये
